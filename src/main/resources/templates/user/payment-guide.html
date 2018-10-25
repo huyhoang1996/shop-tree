@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="common/header::headerArea(~{::title})">
+        <title>Hướng dẫn thanh toán</title>
+    </head>
+    <body>
+        <div class="wrapper">
+
+            <!--Header-->
+            <div th:replace="common/header::header"></div>
+            <!--End header-->
+
+            <div class="main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9">
+
+                            <div class="breadcrumb clearfix">
+                                <ul>
+                                    <li class="home">
+                                        <a title="Đến trang chủ" href="/" itemprop="url"><span itemprop="title">Trang chủ</span></a>
+                                    </li>
+                                    <li class="icon-li"><strong>Hướng dẫn thanh toán</strong> </li>
+                                </ul>
+                            </div>                            
+                            <div class="page-option">
+                                <h1 class="title">
+                                    <span>Hướng dẫn thanh toán</span>
+                                </h1>
+                                <div class="page-option-block">
+                                    <h2 style="margin: 0px 0px 0.45em; padding: 0px; line-height: 1.25; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; text-align: center;">
+                                        <span style="margin: 0px; padding: 0px; color: rgb(0, 0, 255);">CÁC BƯỚC MUA HÀNG VÀ THANH TOÁN</span></h2>
+                                    <h3 style="margin: 0px 0px 0.45em; padding: 0px; font-size: 1.35em; line-height: 1.25; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif;">
+                                        <span style="margin: 0px; padding: 0px; color: rgb(0, 0, 255);">BƯỚC 1: &nbsp;CHỌN MUA SẢN PHẨM:</span></h3>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        <strong style="margin: 0px; padding: 0px;">Truy cập vào đường link <a th:href="@{/users/}">http://localhost:8080/users/:</a></strong></p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        &nbsp;</p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        <strong style="margin: 0px; padding: 0px;"><img alt="" th:src="@{/images/payment-guide-step-1.png}" style="margin: 0px auto; padding: 0px; border: 0px; vertical-align: top; display: block;" width="500"></strong></p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        <br style="margin: 0px; padding: 0px;">
+                                        <strong style="margin: 0px; padding: 0px;">Chọn sản phẩm cần mua:</strong></p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        &nbsp;</p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        <strong style="margin: 0px; padding: 0px;"><img alt="" th:src="@{/images/payment-guide-step-2.png}" style="margin: 0px auto; padding: 0px; border: 0px; vertical-align: top; display: block;" width="500"></strong></p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        &nbsp;<strong style="margin: 0px; padding: 0px;">Kiểm tra số lượng và chỉnh sửa thông tin đã đặt:</strong></p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        <br style="margin: 0px; padding: 0px;">
+                                        <img alt="" th:src="@{/images/payment-guide-step-3.png}" style="margin: 0px auto; padding: 0px; border: 0px; vertical-align: top; display: block;" width="500"></p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        &nbsp;</p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        &nbsp;</p>
+                                    <h3 style="margin: 0px 0px 0.45em; padding: 0px; font-size: 1.35em; line-height: 1.25; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif;">
+                                        <strong style="margin: 0px; padding: 0px;"><strong style="margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px; color: rgb(0, 0, 255);">BƯỚC 2: THANH TOÁN</span></strong></strong></h3>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        <strong style="margin: 0px; padding: 0px;">Nhập thông tin thanh toán và chọn "thanh toán trực tuyến":</strong></p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        -&nbsp;<strong style="margin: 0px; padding: 0px;">Nhập thông tin giao hàng</strong></p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        <strong style="margin: 0px; padding: 0px;"><img alt="" th:src="@{/images/payment-guide-step-4.png}" style="margin: 0px auto; padding: 0px; border: 0px; vertical-align: top; display: block;" width="500"></strong></p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        &nbsp;</p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        <strong style="margin: 0px; padding: 0px;">- chọn hình thức giao hàng và phương thức thanh toán là "Thanh toán trực tuyến" (123Pay)</strong></p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        <strong style="margin: 0px; padding: 0px;"><img alt="" th:src="@{/images/payment-guide-step-5.png}" style="margin: 0px auto; padding: 0px; border: 0px; vertical-align: top; display: block;" width="500"></strong></p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        &nbsp;</p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        <strong style="margin: 0px; padding: 0px;">Thông tin đơn hàng:</strong>&nbsp;có thể nhập ghi chú và xem chi tiết tổng tiền của đơn hàng.</p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        &nbsp;</p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        <img alt="" th:src="@{/images/payment-guide-step-6.png}" style="margin: 0px auto; padding: 0px; border: 0px; vertical-align: top; display: block;" width="500"></p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        <br style="margin: 0px; padding: 0px;">
+                                        <strong style="margin: 0px; padding: 0px;">Lúc này website sẽ tự động link sang trang thanh toán 123pay, điền thông tin thẻ và nhấn thanh toán:</strong></p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        &nbsp;</p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        <strong style="margin: 0px; padding: 0px;"><img alt="" th:src="@{/images/payment-guide-step-7.png}" style="margin: 0px auto; padding: 0px; border: 0px; vertical-align: top; display: block;" width="500"></strong></p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        Xác thực chủ thẻ bằng thông tin truy cập Internet Banking và OTP (One Time Password):</p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        &nbsp;</p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        <img alt="" th:src="@{/images/payment-guide-step-8.png}" style="margin: 0px auto; padding: 0px; border: 0px; vertical-align: top; display: block;" width="500"></p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        <strong style="margin: 0px; padding: 0px;">Để xác thực chủ thẻ, bạn theo các hướng dẫn trên màn hình. Trong đó: Tên truy cập và mật khẩu, bạn nhập thông tin Internet Banking đã đăng ký với Ngân hàng TMCP Ngoại thương – Vietcombank. Nhắn tin theo cú pháp: vcb otp xxxx và gửi đến số 8170. Khi nhận được tin nhắn trả về, bạn nhập mã nhận được vào ô Mã giao dịch. Trong ô “Nhập chuỗi sau”, bạn điền dải số hiện ra bên tay phải. Sau khi nhập xong, bạn chọn check-box “Tôi chấp nhận tất cả các điều khoản thanh toán của Vietcombank”, rồi nhấn vào nút Thanh toán để thực hiện thanh toán. Nhập mã OTP :</strong></p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        <img alt="" th:src="@{/images/payment-guide-step-9.png}" style="margin: 0px auto; padding: 0px; border: 0px; vertical-align: top; display: block;" width="500"></p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        &nbsp;</p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        Nhận kết quả giao dịch: ".</p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        &nbsp;&nbsp;</p>
+                                    <p style="margin: 0px 0px 1em; padding: 0px; color: rgb(68, 68, 68); font-family: arial, helvetica, sans-serif; line-height: 18.6000003814697px;">
+                                        <img alt="" th:src="@{/images/payment-guide-step-10.png}" style="margin: 0px auto; padding: 0px; border: 0px; vertical-align: top; display: block;" width="500"></p>
+
+                                </div>
+                            </div>           
+                        </div>
+                        <div class="col-md-3">                            
+                            <!--Begin-->
+                            <div class="box-support-online">
+                                <h3><span>Hỗ trợ trực tuyến</span></h3>
+                                <div class="support-online-block">
+                                    <div class="support-hotline">
+                                        HOTLINE<br><span class="ng-binding">0123 456 789</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Footer-->
+            <div class="footer" th:insert="common/footer::footer"></div>
+            <!--End footer-->
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(".menu-quick-select ul").hide();
+                    $(".menu-quick-select").hover(function () {
+                        $(".menu-quick-select ul").show();
+                    }, function () {
+                        $(".menu-quick-select ul").hide();
+                    });
+                });
+            </script>
+        </div>
+
+        <script th:src="@{/js/shoppingCart.js}" type="text/javascript"></script>
+        <div style="display: none;" id="loading-mask">
+            <div id="loading_mask_loader" class="loader">
+                <img alt="Loading..." th:src="@{/images/ajax-loader-main.gif}" />
+                <div>
+                    Please wait...
+                </div>
+            </div>
+        </div>
+        <a href="javascript:void(0);" class="back-to-top"><span>Top</span></a>
+    </body>
+</html>

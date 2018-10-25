@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="common/header::headerArea(~{::title})">
+        <title>Fairy Garden</title>
+    </head>
+
+    <body style="" cz-shortcut-listen="true">
+        <div class="wrapper">
+            <!--Header-->
+            <div th:replace="common/header::header">
+            </div>
+            <!--End header-->
+
+            <!--Slide show-->
+            <div class="slideshow" th:insert="common/slideshow::slideshow"></div>
+            <!--End slide show-->
+
+            <!--Advertisement-->
+            <div class="adv" th:insert="common/advertisement::advertisement"></div>
+            <!--End ddvertisement-->
+
+            <!--Product list-->
+            <div class="main">
+                <div class="container">                    
+                    <div class="row">
+                        <div class="col-md-3">
+                            <!--Begin-->
+                            <div class="box-adv">
+                                <div class="sidebar_banner">
+                                    <div class="img_banner">
+                                        <a href="#">
+                                            <img th:src="@{/images/banner/banner-4.jpg}" class="img-responsive lazy">
+                                            <div class="figcaption"></div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="sidebar_banner">
+                                    <div class="img_banner">
+                                        <a href="#">
+                                            <img th:src="@{/images/banner/banner-grass.jpg}" class="img-responsive lazy">
+                                            <div class="figcaption"></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--End-->
+
+                            <!-- Blog sidebar -->
+                            <div class="sidebar_blogs">
+                                <h3 title="bài viết mới" class="sidebar_title">
+                                    Bài viết nổi bật
+                                </h3>
+                                <div class="blog_content">
+                                    <div class="article_item" th:each="item : ${blogSidebar}">
+                                        <div class="article_img">
+                                            <a th:href="@{/users/blog/detail(id=${item.BlogId})}">
+                                                <img th:src="@{'/images/' + ${item.Image}}">
+                                            </a>
+                                        </div>
+                                        <div class="article_content clearfix">
+                                            <div class="title">
+                                                <h4><a th:href="@{/users/blog/detail(id=${item.BlogId})}" th:text="${item.Title}"></a></h4>
+                                            </div>
+                                            <div class="article_meta">
+                                                <div class="article_comment">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i> 
+                                                    <span th:text="${item.View}"></span>
+                                                </div>
+                                                <div class="article_created">
+                                                    <i class="fa fa-calendar" aria-hidden="true"></i> <time th:text="${item.new1}"></time>
+                                                </div>
+                                            </div>
+                                            <div class="des">
+                                                <p th:text="${#strings.substring(item.Description,0,100)} + ' ....'"></p>
+
+                                            </div>
+                                            <a class="readmore" th:href="@{/users/blog/detail(id=${item.BlogId})}">Đọc tiếp <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End blog sidebar -->
+                        </div>
+
+                        <div class="col-md-9">
+
+                            <div class="product_home">
+                                <div class="product_home_image">
+                                    <a href="#">
+                                        <img th:src="@{/images/banner/banner-cactus.jpg}" alt="Cây xương rồng">
+                                        <div class="figcaption"></div>
+                                    </a>
+                                </div>
+
+                                <div class="clearfix">
+                                    <div class="section-heading">
+                                        <h2 title="Xương rồng">
+                                            <span>Xương rồng</span>
+                                        </h2>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix">
+                                    <div class="product-list">
+                                        <!--Product item-->
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product-wrapper zoomIn wow" th:each="item : ${listCactus}">
+                                            <div class="product-block product-resize">
+                                                <div class="product-image image-resize">
+                                                    <div class="sold-out">Hot</div>
+                                                    <a th:href="@{'/users/products/detail/' + ${item.productId}}">
+                                                        <img class="first-img" th:src="@{'/images/product/' + ${#strings.trim(item.imageUrl)}}">
+                                                    </a>
+                                                    <div class="product-actions hidden-xs">
+                                                        <div class="btn-add-to-cart" th:proid="${item.productId}" th:proname="${item.productName}" th:quantity="1" th:price="${item.sellPrice}" th:proimg="'/images/product/' +${#strings.trim(item.imageUrl)}">
+                                                            <a href="javascript:void(0);"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                                                        </div>
+                                                        <div class="btn_quickview">
+                                                            <a class="quickview" th:href="@{'/users/products/detail/' + ${item.productId}}"><i class="fa fa-eye"></i></a>
+                                                        </div>                                                          
+                                                    </div>
+                                                </div>
+                                                <div class="product-info text-center m-t-xxs-20">
+                                                    <h3 class="pro-name">
+                                                        <a th:href="@{'/users/products/detail/' + ${item.productId}}" th:text="${item.productName}"></a>
+                                                    </h3>
+                                                    <div class="pro-prices">
+                                                        <span class="pro-price" th:text="${#numbers.formatDecimal(item.sellPrice, 0, 'COMMA', 2, 'POINT')}"></span><span class="pro-price">₫</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                                         
+                                        <!-- End product item-->
+                                    </div>
+                                </div>
+
+                                <div class="show_more">
+                                    Mời quý khách <a th:href="@{/products/category/7}">Xem thêm các loại xương rồng khác</a> khác
+                                </div>
+                            </div>
+
+                            <div class="product_home">
+                                <div class="product_home_image">
+                                    <a href="#">
+                                        <img th:src="@{/images/banner/banner-sen-da.jpg}" alt="Sen đá">
+                                        <div class="figcaption"></div>
+                                    </a>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="section-heading">
+                                        <h2 title="Sen đá">
+                                            <span>Sen đá</span>
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="product-list">
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product-wrapper zoomIn wow" th:each="item : ${listSucculent}">
+                                            <div class="product-block product-resize">
+                                                <div class="product-image image-resize">
+                                                    <div class="sold-out">Hot</div>
+                                                    <a th:href="@{'/users/products/detail/' + ${item.productId}}">
+                                                        <img class="first-img" th:src="@{'/images/product/' + ${item.imageUrl}}" alt="${item.productName}">
+                                                    </a>
+                                                    <div class="product-actions hidden-xs">
+                                                        <div class="btn-add-to-cart" th:proid="${item.productId}" th:proname="${item.productName}" th:quantity="1" th:price="${item.sellPrice}" th:proimg="'/images/product/' +${#strings.trim(item.imageUrl)}">
+                                                            <a href="javascript:void(0);"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                                                        </div>
+                                                        <div class="btn_quickview">
+                                                            <a class="quickview" th:href="@{'/users/products/detail/' + ${item.productId}}"><i class="fa fa-eye"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-info text-center m-t-xxs-20">
+                                                    <h3 class="pro-name">
+                                                        <a th:href="@{'/users/products/detail/' + ${item.productId}}" th:text="${item.productName}"></a>
+                                                    </h3>
+                                                    <div class="pro-prices">
+                                                        <span class="pro-price" th:text="${#numbers.formatDecimal(item.sellPrice, 0, 'COMMA', 2, 'POINT')}"></span><span class="pro-price">₫</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="show_more">
+                                    Mời quý khách <a th:href="@{/products/category/6}">Xem thêm các loại sen đá</a> khác
+                                </div>
+                            </div>
+
+                            <div class="product_home">
+                                <div class="product_home_image">
+                                    <a href="#">
+                                        <img th:src="@{/images/banner/banner-bonsai.jpg}" alt="Bonsai">
+                                        <div class="figcaption"></div>
+                                    </a>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="section-heading">
+                                        <h2 title="Bonsai">
+                                            <span>Cây để trong nhà</span>
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="product-list">
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product-wrapper zoomIn wow" th:each="item : ${listTreeInHouse}">
+                                            <div class="product-block product-resize">
+                                                <div class="product-image image-resize">
+                                                    <div class="sold-out">Hot</div>
+                                                    <a th:href="@{'/users/products/detail/' + ${item.productId}}">
+                                                        <img class="first-img" th:src="@{'/images/product/' + ${item.imageUrl}}" alt="${item.productName}">
+                                                    </a>
+                                                    <div class="product-actions hidden-xs">
+                                                        <div class="btn-add-to-cart" th:proid="${item.productId}" th:proname="${item.productName}" th:quantity="1" th:price="${item.sellPrice}" th:proimg="'/images/product/' +${#strings.trim(item.imageUrl)}">
+                                                            <a href="javascript:void(0);"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                                                        </div>
+                                                        <div class="btn_quickview">
+                                                            <a class="quickview" th:href="@{'/users/products/detail/' + ${item.productId}}"><i class="fa fa-eye"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-info text-center m-t-xxs-20">
+                                                    <h3 class="pro-name">
+                                                        <a th:href="@{'/users/products/detail/' + ${item.productId}}" th:text="${item.productName}"></a>
+                                                    </h3>
+                                                    <div class="pro-prices">
+                                                        <span class="pro-price" th:text="${#numbers.formatDecimal(item.sellPrice, 0, 'COMMA', 2, 'POINT')}"></span><span class="pro-price">₫</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="show_more">
+                                    Mời quý khách <a th:href="@{/products/category/5}">Xem thêm các loại cây cảnh trong nhà</a> khác
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End product list-->
+
+            <!--Blog area-->
+            <div class="partner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <!--Blog-->
+                            <section id="blog_index" class="container m-b-20">
+                                <div class="row">
+                                    <div class="col-md-12 col-xs-12">
+                                        <div class="section-heading">
+                                            <h2 title="kinh nghiệm trồng cây cảnh">
+                                                <span>Kinh nghiệm trồng cây cảnh</span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div id="blog_index_list" class="owl-carousel">
+
+                                        <div class="article_item" th:each="item : ${blogFooter}">
+                                            <div class="article_img">
+                                                <a th:href="@{/users/blog/detail(id=${item.BlogId})}">
+                                                    <img th:src="@{'/images/' + ${item.Image}}" alt="Nghệ thuật tạo hình cây cảnh" title="Nghệ thuật tạo hình cây cảnh">
+                                                </a>
+                                            </div>
+                                            <div class="article_content clearfix">
+                                                <div class="title">
+                                                    <h3><a th:href="@{/users/blog/detail(id=${item.BlogId})}" th:text="${item.Title}"></a></h3>
+                                                </div>
+                                                <div class="article_meta">
+                                                    <div class="article_comment">
+                                                        <i class="fa fa-eye" aria-hidden="true"></i><span th:text="${item.View}"></span>
+                                                    </div>
+                                                    <div class="article_created">
+                                                        <i class="fa fa-calendar" aria-hidden="true"></i> <time th:text="${item.new1}">28/07/2018</time>
+                                                    </div>
+                                                </div>
+                                                <div class="des">
+                                                    <p th:text="${#strings.substring(item.Description,0,100)} + ' ....'">  </p>
+                                                </div>
+                                                <a class="readmore" th:href="@{/users/blog/detail(id=${item.BlogId})}">Đọc tiếp <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!--EndBlog-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End blog area-->
+
+            <!--Footer-->
+            <div class="footer" th:insert="common/footer::footer"></div>
+            <!--End footer-->
+        </div>
+
+        <script th:src="@{/js/shoppingCart.js}" type="text/javascript"></script>
+        <div style="display: none;" id="loading-mask">
+            <div id="loading_mask_loader" class="loader">
+                <img alt="Loading..." th:src="@{/images/ajax-loader-main.gif}" />
+                <div>
+                    Please wait...
+                </div>
+            </div>
+        </div>
+        <a href="javascript:void(0);" class="back-to-top"><span>Top</span></a>
+    </body>
+</html>

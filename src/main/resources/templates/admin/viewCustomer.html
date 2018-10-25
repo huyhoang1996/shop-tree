@@ -1,0 +1,74 @@
+
+<html  xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Startmin - Bootstrap Admin Theme</title>
+
+        <link href="/admin/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/admin/css/metisMenu.min.css" rel="stylesheet">
+        <link href="/admin/css/startmin.css" rel="stylesheet">
+        <link href="/admin/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+
+        <div id="wrapper">
+
+            <div th:replace="admin/common/header::header"></div>
+
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">QUẢN LÝ KHÁCH HÀNG</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Chỉnh sửa
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-3"></div>
+                                    <div class="col-lg-6">
+                                        <form role="form">
+                                            <div class="form-group">
+                                                <label>Tên khách hàng</label>
+                                                <input class="form-control" th:field="${customer.customerName}" readonly="true">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Địa chỉ khách hàng</label>
+                                                <input class="form-control" readonly="true" th:field="${customer.address}" >
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Số điện thoại khách hàng</label>
+                                                <input class="form-control" readonly="true" th:field="${customer.phone}" >
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Tổng số tiền khách hàng đã mua</label>
+                                                <input class="form-control" readonly="true" th:field="${customer.totalMoney}">
+                                            </div>
+                                            <button type="submit" class="btn btn-default"><a th:href="@{'/customer/'}"> Quay lại</a></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-lg-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/admin/js/jquery.min.js"></script>
+        <script src="/admin/js/bootstrap.min.js"></script>
+        <script src="/admin/js/metisMenu.min.js"></script>
+        <script src="/admin/js/startmin.js"></script>
+
+    </body>
+</html>
+

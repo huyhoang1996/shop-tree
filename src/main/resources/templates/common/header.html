@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="headerArea(title)">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta charset="UTF-8" />
+        <title th:replace="${title}"></title>
+        <meta name="description" />
+        <meta name="keywords" />
+        <link th:href="@{/images/favicon.png}" rel="shortcut icon" type="image/x-icon" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="vi_VN" property="og:locale" />
+
+        <style>
+            .loader_overlay {
+                position: fixed;
+                z-index: 9999;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                background-color: #fff;
+                -webkit-transition: all .1s ease;
+                -o-transition: all .1s ease;
+                transition: all .1s ease;
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .loader_overlay.loaded {
+                opacity: 0;
+                visibility: hidden;
+                z-index: -2;
+            }
+        </style>
+        <!--CSS-->
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+        <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+        <link th:href="@{/css/roboto.css}" rel="stylesheet" type="text/css" />
+        <!--JS-->
+        <script th:src="@{/js/plugin.js}" type="text/javascript"></script>
+        <script th:src="@{/js/option_selection.js}" type="text/javascript"></script>
+        <script th:src="@{/js/api.jquery.js}" type="text/javascript"></script>
+
+        <script th:src="@{/js/fixheightproductv2.js}" type="text/javascript"></script>
+        <script th:src="@{/js/scripts.js}" type="text/javascript"></script>
+        <script th:src="@{/js/jquery.lazyload.min.js}" type="text/javascript"></script>
+        <script th:src="@{/js/angular.min.js}" type="text/javascript"></script>
+        <script th:src="@{/js/angular-sanitize.min.js}" type="text/javascript"></script>
+        <script th:src="@{/js/spin.min.js}" type="text/javascript"></script>
+        <script th:src="@{/js/angular-spinner.min.js}" type="text/javascript"></script>
+        <script th:src="@{/js/angular-loading-spinner.js}" type="text/javascript"></script>
+        <script th:src="@{/js/appMain.js}" type="text/javascript"></script>
+        <script th:src="@{/js/directive.js}" type="text/javascript"></script>
+        <script th:src="@{/js/angular-summernote.js}" type="text/javascript"></script>
+        <script th:src="@{/js/paging.js}" type="text/javascript"></script>
+        <script th:src="@{/js/ajaxServices.js}" type="text/javascript"></script>
+        <script th:src="@{/js/alertsServices.js}" type="text/javascript"></script>        
+
+        <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
+        <link th:href="@{/css/responsive.css}" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <div class="header" th:fragment="header">
+            <script th:src="@{/js/login.js}" type="text/javascript"></script>
+            <section class="top-link clearfix">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="nav navbar-nav topmenu-contact pull-left">
+                                <li><i class="fa fa-phone"></i> <span>Hotline:0123 456 789</span></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
+                                <li class="order-check">
+                                    <a th:href="@{/users/customer/check-order-without-login}">
+                                        <i class="fa fa-pencil-square-o"></i> Kiểm tra đơn hàng
+                                    </a>
+                                </li>
+                                <li class="order-cart">
+                                    <a th:href="@{/users/order/}">
+                                        <i class="fa fa-shopping-cart"></i> Giỏ hàng
+                                    </a>
+                                </li>
+                                <li th:unless="${session.userName}" class="account-login">
+                                    <a th:href="@{/users/customer/login}">
+                                        <i class="fa fa-sign-in"></i> Đăng nhập 
+                                    </a>
+                                </li>
+                                <li th:unless="${session.userName}" class="account-register">
+                                    <a th:href="@{/users/customer/register}">
+                                        <i class="fa fa-key"></i> Đăng ký 
+                                    </a>
+                                </li>
+                                <li th:unless="${session.userName}" class="account-register">
+                                    <a th:href="@{/users/customer/forgot-password}">
+                                        <i class="fa fa-lock"></i> Quên mật khẩu
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="show-mobile hidden-lg hidden-md">
+                                <div class="quick-user">
+                                    <div class="quickaccess-toggle">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="inner-toggle">
+                                        <ul class="login links">
+                                            <li>
+                                                <a th:href="@{/users/customer/register}"><i class="fa fa-sign-in"></i> Đăng ký</a>
+                                            </li>
+                                            <li>
+                                                <a th:href="@{/users/customer/login}"><i class="fa fa-key"></i> Đăng nhập</a>
+                                            </li>
+                                        </ul>
+                                    </div>                            
+                                </div>
+
+                                <div class="quick-access">
+                                    <div class="quickaccess-toggle">
+                                        <i class="fa fa-list"></i>
+                                    </div>
+                                    <div class="inner-toggle">
+                                        <ul class="links">
+                                            <li>
+                                                <a id="mobile-wishlist-total" th:href="@{/users/customer/check-order-without-login}" class="wishlist">
+                                                    <i class="fa fa-pencil-square-o"></i> Kiểm tra đơn hàng
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="shoppingcart">
+                                                    <i class="fa fa-shopping-cart"></i> Giỏ hàng
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Header -->
+            <header id="header">
+                <div id="header_main">
+                    <div class="container">
+                        <div class="row">
+                            <!--logo-->
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-8">                      
+                                <h1 class="pull-left">
+                                    <a href="#" class="logo" title="Fairy Garden">
+                                        <img th:src="@{/images/logo.png}" alt="Fairy Garden">
+                                    </a>
+                                </h1>                        
+                            </div>
+                            <!-- end logo -->
+
+                            <!-- Search -->
+                            <div class="col-lg-6 col-md-5 col-sm-4 hidden-xs">                      
+                                <div class="search_box">
+                                    <div class="search_wrapper">
+                                        <form th:action="@{/users/products/search}" method="post">
+                                            <input type="text" name="keyword" class="index_input_search" placeholder="Tìm kiếm ở đây..."/>
+                                            <button class="btn_search_submit btn" type="submit" id="btnsearch"><span>Tìm ngay</span></button>
+                                        </form>
+                                    </div>
+                                </div>                       
+                            </div>
+                            <!-- End Search -->
+
+
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">                           
+                                <!-- Cart -->
+                                <div class="cart_header">
+                                    <a th:href="@{/users/order/}" title="Giỏ hàng">
+                                        <span class="cart_header_icon"></span>
+                                        <span class="box_text">
+                                            <strong class="cart_header_count">Giỏ hàng <span id="totalQuantity"></span></strong>
+                                            <span class="cart_price"></span>
+                                        </span>
+                                    </a>
+
+                                    <div class="cart_header_top_box" id="subMenuCart">
+
+                                    </div>
+                                </div>
+                                <!-- End Cart -->
+
+                                <!-- Account -->
+                                <div class="user_login">
+                                    <div th:unless="${session.userName}">
+                                        <div class="user_login_icon"></div>                           
+                                        <div class="box_text">
+                                            <strong>Tài khoản</strong>                               
+                                        </div>
+                                        <div class="user_box">
+                                            <ul>
+                                                <li><a th:href="@{/users/customer/login}">Đăng nhập</a></li>
+                                                <li><a th:href="@{/users/customer/register}">Đăng ký</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div th:if="${session.userName}">
+                                        <div class="user_login_icon"></div>  
+                                        <div class="box_text">
+                                            <strong th:text="'Hello ' + ${session.userName}"></strong>                               
+                                        </div>
+                                        <div class="user_box">
+                                            <ul>                                               
+                                                <li><a th:href="@{/users/customer/edit/}">Thông tin cá nhân</a></li>
+                                                <li><a th:href="@{/users/customer/logout}">Đăng xuất</a></li>  
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- End account -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Mobile zone-->
+                <div id="header_mobile">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Menu mobile -->
+                            <button type="button" class="navbar-toggle collapsed" id="trigger_click_mobile">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                            <div id="mobile_wrap_menu" class="visible-xs visible-sm">
+                                <div class="user_mobile">
+                                    <div class="icon_user_mobile">
+                                        <img th:src="@{/images/product/tree-bonsai.jpg}" alt="account">
+                                    </div>
+                                    <div class="login_mobile">
+                                        <a th:href="@{/users/customer/login}" class="login-btn">Đăng nhập </a>
+                                        <a th:href="@{/users/customer/register}" class="login-btn"> / Đăng ký</a>
+                                    </div>
+                                    <div class="close_menu"></div>
+                                </div>
+                                <div class="content_menu">
+                                    <ul>
+                                        <li class="level0"><a class='' th:href="@{/users/}"><span>Trang chủ</span></a></li>
+                                        <li class="level0"><a class='' th:href="@{/users/introduction}"><span>Giới thiệu</span></a></li>
+                                        <li class="level0"><a class='' th:href="@{/users/products/list-all}"><span>Sản phẩm</span></a></li>
+                                        <li class="level0"><a class='' th:href="@{/users/blog}"><span>Blog</span></a></li>
+                                        <li class="level0"><a class='' th:href="@{/users/contact}"><span>Liên hệ</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- End menu mobile -->
+
+                            <div class="pull-right mobile-menu-icon-wrapper">
+                                <!-- Logo mobile -->
+                                <div class="logo logo-mobile">
+                                    <a href="" title="Fairy Garden">
+                                        <img th:src="@{/images/logo.png}" alt="Fairy Garden">
+                                    </a>
+                                </div>
+                                <!-- End Logo mobile -->
+
+                                <!-- Cart mobile -->
+                                <div class="cart_header" id="cart-target">
+                                    <a href="gio-hang.html" title="Giỏ hàng">
+                                        <div class="cart_header_icon"></div>
+                                        <div class="box_text">
+                                            <strong class="cart_header_count"><span>0</span></strong>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- End Cart mobile -->
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <!-- Search mobile -->
+                            <div class="search_mobile col-md-12">
+                                <div class="search_box">
+                                    <div class="search_wrapper">
+                                        <input type="text" name="search" class="index_input_search" id="txtsearch2"/>
+                                        <button class="btn_search_submit btn " type="button" id="btnsearch2"><span><i class="fa fa-search"></i></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End search mobile -->
+                        </div>
+                    </div>
+                </div>
+                <!--End mobile zone-->
+            </header>
+            <!-- End header -->
+
+            <!-- Main menu -->
+            <nav class="navbar-main">
+                <div id="mb_mainnav">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-12 col-xs-12 vertical_menu">
+                                <div id="mb_verticle_menu" class="menu-quick-select">
+                                    <div class="title_block">
+                                        <span>Danh mục sản phẩm</span>
+                                    </div>
+                                    <div id="menuverti" class="block_content navbar_menuvertical">                        
+                                        <ul class='nav_verticalmenu'>                                    
+                                            <li class="level0" th:each="category : ${categories}">
+                                                <a class='' th:href="@{'/users/products/category/' + ${category.categoryId}}">
+                                                    <img class='icon-menu' th:src="@{'/images/icon/' + ${category.imageUrl}}" th:alt="${category.categoryName}"> <span th:text="${category.categoryName}"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <nav class="col-md-9 col-sm-12 col-xs-12 p-l-0">
+                                <ul class='menu nav navbar-nav menu_hori'>
+                                    <li class="level0">
+                                        <a class='' th:href="@{/users/}"><span>Trang chủ</span></a>
+                                    </li>
+                                    <li class="level0">
+                                        <a class='' th:href="@{/users/introduction}"><span>Giới thiệu</span></a>
+                                    </li>
+                                    <li class="level0">
+                                        <a class='' th:href="@{/users/products/list-all}"><span>Sản phẩm</span></a>
+                                    </li>
+                                    <li class="level0">
+                                        <a class='' th:href="@{/users/blog}"><span>Blog</span></a>
+                                    </li>
+                                    <li class="level0">
+                                        <a class='' th:href="@{/users/contact}"><span>Liên hệ</span></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- End main menu -->
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                var str = location.href.toLowerCase();
+                $("ul.menu li a").each(function () {
+                if (str.indexOf(this.href.toLowerCase()) >= 0) {
+                $("ul.menu li").removeClass("active");
+                $(this).parent().addClass("active");
+                }
+                });
+                });
+            </script>
+        </div>
+    </body>
+</html>

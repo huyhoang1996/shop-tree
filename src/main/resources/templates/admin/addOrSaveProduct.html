@@ -1,0 +1,102 @@
+<html  xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href="/admin/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/admin/css/metisMenu.min.css" rel="stylesheet">
+        <link href="/admin/css/startmin.css" rel="stylesheet">
+        <link href="/admin/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+
+        <div id="wrapper">
+
+            <div th:replace="admin/common/header::header"></div>
+
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">QUẢN LÝ NHÂN VIÊN</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-3"></div>
+                                    <div class="col-lg-6">
+                                        <form role="form" th:action="@{/products/save}" method="post" th:object="${product}" novalidate="novalidate" enctype="multipart/form-data">
+                                            <p style="color: red;" th:if="${errorMsg != null}"><span th:text=${errorMsg}></span></p>
+                                            <div class="form-group">
+                                            	<input class="form-control" name="type" type="hidden" th:value="${type}">
+                                                <input class="form-control" type="hidden" th:field="*{productId}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Tên sản phẩm</label>
+                                                <input class="form-control" type="text" placeholder="Enter text" th:field="*{productName}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Giá nhập vào</label>
+                                                <input class="form-control" type="text" placeholder="Enter text" th:field="*{inputPrice}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Giá bán</label>
+                                                <input class="form-control" type="text" placeholder="Enter text" th:field="*{sellPrice}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Mô tả</label>
+                                                <textarea rows="6" class="form-control" th:field="*{description}"><span th:text="*{description}"></span></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Số lượng</label>
+                                                <input class="form-control" type="text" placeholder="Enter text" th:field="*{quantity}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Ưu tiên</label>
+                                                <input class="form-control" type="text" placeholder="Enter text" th:field="*{priority}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Giảm giá</label>
+                                                <input class="form-control" type="text" placeholder="Enter text" th:field="*{discount}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label style="display: block;">Hình ảnh</label>
+                                                <img style="width: 150px; float: left;" th:each="item : ${imagesCol}" 
+                                                            th:src="@{'/images/product/' + ${#strings.trim(item.url)}}" />                                                        
+                                                <input class="form-control" multiple="true" type="file" name="images" placeholder="Chọn ảnh"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Loại sản phẩm:</label>
+                                                <select class="form-control" th:field="*{categoryId}">
+                                                    <option value="">-- Chọn loại sản phẩm --</option>
+                                                    <option th:each="item : ${category}" 
+                                                            th:value="${item.categoryId}"
+                                                            th:utext="${item.categoryName}">
+                                                    </option>
+                                                </select>
+                                                <p style="color: red;" th:if="${#fields.hasErrors('categoryId')}" th:errors="*{categoryId}" />
+                                            </div>                                           
+                                            <button type="submit" class="btn btn-default">Lưu</button>
+                                            <button type="reset" class="btn btn-default">Làm mới</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-lg-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/admin/js/jquery.min.js"></script>
+        <script src="/admin/js/bootstrap.min.js"></script>
+        <script src="/admin/js/metisMenu.min.js"></script>
+        <script src="/admin/js/startmin.js"></script>
+
+    </body>
+</html>

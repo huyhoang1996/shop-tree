@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="common/header::headerArea(~{::title})">
+        <title>Kiểm tra đơn hàng</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <!--Header-->
+            <div th:replace="common/header::header"></div>
+            <!--End header-->
+
+            <div class="main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">                            
+                            <div class="menu-account">
+                                <h3>
+                                    <span>
+                                        Quản lý cá nhân
+                                    </span>
+                                </h3>
+                                <ul>
+                                    <li><a th:href="@{/users/customer/edit}"><i class="glyphicon glyphicon-user"></i> Thông tin tài khoản</a></li>
+                                    <li class="active"><a th:href="@{/users/customer/check-order}"><i class="glyphicon glyphicon-list-alt"></i> Đơn hàng của tôi</a></li>                                  
+                                    <li><a th:href="@{/users/customer/change-password}"><i class="fa fa-key"></i> Thay đổi mật khẩu</a></li>
+                                    <li><a th:href="@{/users/customer/logout}"><i class="glyphicon glyphicon-log-out"></i> Thoát</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+
+                            <div class="breadcrumb clearfix">
+                                <ul>
+                                    <li itemscope="" class="home">
+                                        <a title="Đến trang chủ" th:href="@{/users/}" itemprop="url"><span itemprop="title">Trang chủ</span></a>
+                                    </li>
+                                    <li class="icon-li"><strong>Đơn hàng của tôi</strong> </li>
+                                </ul>
+                            </div>
+
+                            <div class="myorder-content clearfix">
+                                <h1 class="title"><span>Đơn hàng của tôi</span></h1>
+                                <div class="myorder-block">
+                                    <div class="table-responsive clearfix myorder-info">
+                                        <table class="table table-mycart">
+                                            <thead>
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Mã đơn hàng</th>
+                                                    <th>Tên khách hàng</th>
+                                                    <th>Tổng tiền</th>
+                                                    <th>Vận chuyển</th>
+                                                    <th>&nbsp;</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr th:each="item,iter : ${listOrder}">
+                                                    <td th:text="${iter.index + 1}"></td>
+                                                    <td><a href="javascript:void(0);" th:text="${item.OrderCode}"></a></td>
+                                                    <td><a href="javascript:void(0);" th:text="${item.CustomerId.CustomerName}"></a></td>
+                                                    <td th:text="${#numbers.formatDecimal(item.Total, 0, 'COMMA', 2, 'POINT')} + ' đ'"></td>
+                                                    <td th:text="${item.Status}"></td>  
+                                                    <td><a th:href="@{/users/customer/check-order-detail(orderCode = ${item.OrderCode})}"><i class="fa fa-angle-double-right "></i><span>Xem đơn hàng</span></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Footer-->
+            <div class="footer" th:insert="common/footer::footer"></div>
+            <!--End footer-->
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(".menu-quick-select ul").hide();
+                    $(".menu-quick-select").hover(function () {
+                        $(".menu-quick-select ul").show();
+                    }, function () {
+                        $(".menu-quick-select ul").hide();
+                    });
+                });
+            </script>
+        </div>
+
+        <script th:src="@{/js/shoppingCart.js}" type="text/javascript"></script>
+        <div style="display: none;" id="loading-mask">
+            <div id="loading_mask_loader" class="loader">
+                <img alt="Loading..." th:src="@{/images/ajax-loader-main.gif}" />
+                <div>
+                    Please wait...
+                </div>
+            </div>
+        </div>
+        <a href="javascript:void(0);" class="back-to-top"><span>Top</span></a>      
+    </body>
+</html>

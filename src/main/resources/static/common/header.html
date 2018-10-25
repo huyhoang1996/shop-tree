@@ -1,0 +1,347 @@
+<div class="header" th:fragment="header">
+    <script src="../js/login.js" type="text/javascript"></script>
+    <section class="top-link clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="nav navbar-nav topmenu-contact pull-left">
+                        <li><i class="fa fa-phone"></i> <span>Hotline:0123 456 789</span></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
+                        <li class="order-check">
+                            <a href="kiem-tra-don-hang.html">
+                                <i class="fa fa-pencil-square-o"></i> Kiểm tra đơn hàng
+                            </a>
+                        </li>
+                        <li class="order-cart">
+                            <a href="gio-hang.html">
+                                <i class="fa fa-shopping-cart"></i> Giỏ hàng
+                            </a>
+                        </li>
+                        <li class="account-login">
+                            <a href="dang-nhap.html">
+                                <i class="fa fa-sign-in"></i> Đăng nhập 
+                            </a>
+                        </li>
+                        <li class="account-register">
+                            <a href="dang-ky.html">
+                                <i class="fa fa-key"></i> Đăng ký 
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="show-mobile hidden-lg hidden-md">
+                        <div class="quick-user">
+                            <div class="quickaccess-toggle">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <div class="inner-toggle">
+                                <ul class="login links">
+                                    <li>
+                                        <a href="dang-ky.html"><i class="fa fa-sign-in"></i> Đăng ký</a>
+                                    </li>
+                                    <li>
+                                        <a href="dang-nhap.html"><i class="fa fa-key"></i> Đăng nhập</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="quick-access">
+                            <div class="quickaccess-toggle">
+                                <i class="fa fa-list"></i>
+                            </div>
+                            <div class="inner-toggle">
+                                <ul class="links">
+                                    <li>
+                                        <a id="mobile-wishlist-total" href="#" class="wishlist">
+                                            <i class="fa fa-pencil-square-o"></i> Kiểm tra đơn hàng
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="shoppingcart">
+                                            <i class="fa fa-shopping-cart"></i> Giỏ hàng
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Header -->
+    <header id="header">
+        <div id="header_main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-8">
+                        <!--logo-->
+                        <h1 class="pull-left">
+                            <a href="#" class="logo" title="Fairy Garden">
+                                <img src="../images/logo.jpg" alt="Fairy Garden">
+                            </a>
+                        </h1>
+                        <!-- end logo -->
+                    </div>
+                    <div class="col-lg-6 col-md-5 col-sm-4 hidden-xs">
+                        <!-- Search -->
+                        <div class="search_box">
+                            <div class="search_wrapper">
+                                <input type="text" name="search" class="index_input_search" id="txtsearch" placeholder="Tìm kiếm ở đây..."/>
+                                <button class="btn_search_submit btn" type="button" id="btnsearch"><span>Tìm ngay</span></button>
+                            </div>
+                        </div>
+                        <!-- End Search -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <!-- Cart -->
+                        <div class="cart_header">
+                            <a href="gio-hang.html" title="Giỏ hàng">
+                                <span class="cart_header_icon"></span>
+                                <span class="box_text">
+                                    <strong class="cart_header_count">Giỏ hàng <span>(0)</span></strong>
+                                    <span class="cart_price">0₫</span>
+                                </span>
+                            </a>
+                            <div class="cart_clone_box">
+                                <div class="cart_box_wrap hidden">
+                                    <div class="cart_item original clearfix">
+                                        <div class="cart_item_image"></div>
+                                        <div class="cart_item_info">
+                                            <p class="cart_item_title"><a href="" title=""></a></p>
+                                            <span class="cart_item_quantity"></span>
+                                            <span class="cart_item_price"></span>
+                                            <span class="remove"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cart_header_top_box">
+                                <div class="cart_empty">Giỏ hàng của bạn vẫn chưa có sản phẩm nào.</div>
+                            </div>
+                        </div>
+                        <!-- End Cart -->
+
+                        <!-- Account -->
+                        <div class="user_login">
+                            <div class="user_login_icon"></div>
+                            <div class="box_text">
+                                <strong>Tài khoản</strong>
+                                <!--<span class="cart_price">Đăng nhập, đăng ký</span>-->
+                            </div>
+                            <div class="user_box">
+                                <ul>
+                                    <li><a href="dang-nhap.html">Đăng nhập</a></li>
+                                    <li><a href="dang-ky.html">Đăng ký</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- End account -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="header_mobile">
+            <div class="container">
+                <div class="row">
+                    <!-- Menu mobile -->
+                    <button type="button" class="navbar-toggle collapsed" id="trigger_click_mobile">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div id="mobile_wrap_menu" class="visible-xs visible-sm">
+                        <div class="user_mobile">
+                            <div class="icon_user_mobile">
+                                <img src="../images/product/tree-bonsai.jpg" alt="account">
+                            </div>
+                            <div class="login_mobile">
+                                <a href="dang-nhap.html" class="login-btn">Đăng nhập </a>
+                                <a href="dang-ky.html" class="login-btn"> / Đăng ký</a>
+                            </div>
+                            <div class="close_menu"></div>
+                        </div>
+                        <div class="content_menu">
+                            <ul>
+                                <li class="level0"><a class='' href='trang-chu.html'><span>Trang chủ</span></a></li>
+                                <li class="level0"><a class='' href='gioi-thieu.html'><span>Giới thiệu</span></a></li>
+                                <li class="level0"><a class='' href='san-pham.html'><span>Sản phẩm</span></a></li>
+                                <li class="level0"><a class='' href='tin-tuc.html'><span>Tin tức</span></a></li>
+                                <li class="level0"><a class='' href='lien-he.html'><span>Liên hệ</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End menu mobile -->
+                    <div class="pull-right mobile-menu-icon-wrapper">
+                        <!-- Logo mobile -->
+                        <div class="logo logo-mobile">
+                            <a href="" title="Fairy Garden">
+                                <img src="../images/logo.jpg" alt="Fairy Garden">
+                            </a>
+                        </div>
+                        <!-- End Logo mobile -->
+                        <!-- Cart mobile -->
+                        <div class="cart_header" id="cart-target">
+                            <a href="gio-hang.html" title="Giỏ hàng">
+                                <div class="cart_header_icon"></div>
+                                <div class="box_text">
+                                    <strong class="cart_header_count"><span>0</span></strong>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- End Cart mobile -->
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- Search mobile -->
+                    <div class="search_mobile col-md-12">
+                        <div class="search_box">
+                            <div class="search_wrapper">
+                                <input type="text" name="search" class="index_input_search" id="txtsearch2"/>
+                                <button class="btn_search_submit btn " type="button" id="btnsearch2"><span><i class="fa fa-search"></i></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End search mobile -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End header -->
+
+    <!-- Main menu -->
+    <nav class="navbar-main">
+        <div id="mb_mainnav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-12 col-xs-12 vertical_menu">
+                        <div id="mb_verticle_menu" class="menu-quick-select">
+                            <div class="title_block">
+                                <span>Danh mục sản phẩm</span>
+                            </div>
+                            <div id="menuverti" class="block_content navbar_menuvertical">
+                                <ul class='nav_verticalmenu' th:fragment="mainMenu">
+                                    <li class="has-child level0">
+                                        <a class='' href='#'>
+                                            <img class='icon-menu' src='../images/icon/icon-tree-1.png' alt='Cây nội thất - văn phòng'> <span>Cây nội thất - văn phòng</span>
+                                        </a>
+                                        <ul class="level1">
+                                            <li class="level1"><a class='' href='san-pham/ngao-33820'><span>Cây nội thất</span></a></li>
+                                            <li class="level1"><a class='' href='san-pham/so-33821'><span>Cây văn phòng</span></a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="level0">
+                                        <a class='' href='#'>
+                                            <img class='icon-menu' src='../images/icon/icon-tree-2.png' alt='Cây phong thủy'> <span>Cây phong thủy</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="level0">
+                                        <a class='' href='#'>
+                                            <img class='icon-menu' src='../images/icon/icon-tree-3.png' alt='Hoa sự kiện'> <span>Hoa sự kiện</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="level0">
+                                        <a class='' href='#'>
+                                            <img class='icon-menu' src='../images/icon/icon-tree-4.png' alt='Cây trồng trong nhà'> <span>Cây trồng trong nhà</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="level0">
+                                        <a class='' href='#'>
+                                            <img class='icon-menu' src='../images/icon/icon-tree-5.png' alt='Hoa chậu'> 
+                                            <span>Hoa chậu</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="level0">
+                                        <a class='' href='#'>
+                                            <img class='icon-menu' src='../images/icon/icon-tree-6.png' alt='Cây để bàn'> <span>Cây để bàn</span>
+                                        </a>                                                                             
+                                    </li>
+
+                                    <li class="level0">
+                                        <a class='' href='#'>
+                                            <img class='icon-menu' src='../images/icon/icon-tree-7.png' alt='Cây xanh ngoại thất'> <span>Cây xanh ngoại thất</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="level0">
+                                        <a class='' href='#'>
+                                            <img class='icon-menu' src='../images/icon/icon-tree-8.png' alt='Cây thuốc nam'> <span>Cây thuốc nam</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="has-child level0">
+                                        <a class='' href='san-pham/san-pham-khac-33813'>
+                                            <img class='icon-menu' src='../images/icon/icon-tree-10.png' alt='Sản phẩm khác'>
+                                            <span>Sản phẩm khác</span>
+                                        </a>
+                                        <ul class='level1'>
+                                            <li class="level1">
+                                                <a class='' href='#'><span>Phân bón</span></a>
+                                            </li>
+                                            <li class="level1">
+                                                <a class='' href='#'><span>Đất trồng cây</span></a>
+                                            </li>                                                        
+                                        </ul>
+                                    </li>
+
+                                    <li class="has-child level0">
+                                        <a class='' href='#'>
+                                            <img class='icon-menu' src='../images/icon/icon-tree-9.png' alt='Hải sản khô'> <span>Phụ kiện</span>
+                                        </a>
+                                        <ul class='level1'>
+                                            <li class="level1">
+                                                <a class='' href='#'><span>Tiểu cảnh trang trí</span></a>
+                                            </li>
+                                            <li class="level1">
+                                                <a class='' href='#'><span>Chậu trồng cây</span></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="col-md-9 col-sm-12 col-xs-12 p-l-0">
+                        <ul class='menu nav navbar-nav menu_hori'>
+                            <li class="level0">
+                                <a class='' th:href="@{/users/}"><span>Trang chủ</span></a>
+                            </li>
+                            <li class="level0">
+                                <a class='' th:href="@{/users/introduction}"><span>Giới thiệu</span></a>
+                            </li>
+                            <li class="level0">
+                                <a class='' href='san-pham.html'><span>Sản phẩm</span></a>
+                            </li>
+                            <li class="level0">
+                                <a class='' th:href="@{/users/blog}"><span>Blog</span></a>
+                            </li>
+                            <li class="level0">
+                                <a class='' th:href="@{/users/contact}"><span>Liên hệ</span></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- End main menu -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var str = location.href.toLowerCase();
+            $("ul.menu li a").each(function () {
+                if (str.indexOf(this.href.toLowerCase()) >= 0) {
+                    $("ul.menu li").removeClass("active");
+                    $(this).parent().addClass("active");
+                }
+            });
+        });
+    </script>
+</div>

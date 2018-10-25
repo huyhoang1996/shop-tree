@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="common/header::headerArea(~{::title})">
+        <title>Thông tin cá nhân</title>
+    </head>
+    <body>
+        <div class="wrapper">
+
+            <!--Header-->
+            <div th:replace="common/header::header"></div>
+            <!--End header-->
+
+            <div class="main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">                          
+                            <div class="menu-account ng-scope">
+                                <h3>
+                                    <span>
+                                        Quản lý cá nhân
+                                    </span>
+                                </h3>
+                                <ul>
+                                    <li class="active"><a th:href="@{/users/customer/edit}"><i class="glyphicon glyphicon-user"></i> Thông tin tài khoản</a></li>
+                                    <li><a th:href="@{/users/customer/check-order}"><i class="glyphicon glyphicon-list-alt"></i> Đơn hàng của tôi</a></li>
+                                    <li><a th:href="@{/users/customer/change-password}"><i class="fa fa-key"></i> Thay đổi mật khẩu</a></li>
+                                    <li><a th:href="@{/users/customer/logout}"><i class="glyphicon glyphicon-log-out"></i> Thoát</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+
+                            <div class="breadcrumb clearfix">
+                                <ul>
+                                    <li class="home">
+                                        <a title="Đến trang chủ" href="/" itemprop="url"><span itemprop="title">Trang chủ</span></a>
+                                    </li>
+                                    <li class="icon-li"><strong>Thông tin tài khoản</strong> </li>
+                                </ul>
+                            </div>                            
+                            <div class="comunication-content clearfix">
+                                <h1 class="title"><span>Thông tin tài khoản</span></h1>
+                                <div class="alert-info alert fade in" th:if="${message}">
+                                    <button data-dismiss="alert" class="close"></button>
+                                    <i class="fa-fw fa fa-check"></i> 
+                                    <span th:text="${message}"></span>
+                                </div>
+                                <div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12 col-xs-offset-0 col-sm-offset-0">
+                                    <form class="form-horizontal" th:action="@{/users/customer/edit}" th:object="${customer}" method="post">
+                                        <h2>Thông tin tài khoản</h2>
+                                        <input type="hidden" th:field="*{customerId}"/>
+                                        <div class="form-group">
+                                            <label for="Email" class="col-sm-3 control-label">Email</label>
+                                            <div class="col-sm-9">
+                                                <label class="control-label" th:text="${customer.Email}"></label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Email" class="col-sm-3 control-label">Mật khẩu</label>
+                                            <div class="col-sm-9">
+                                                <label class="control-label">***</label>
+                                                <a th:href="@{/users/customer/change-password}"><i class="fa fa-edit"></i></a>
+                                            </div>
+                                        </div>
+                                        <h2>Thông tin cá nhân</h2>
+                                        <div class="form-group">
+                                            <label for="Name" class="col-sm-3 control-label">Họ tên</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" th:field="*{customerName}" required="true">
+                                            </div>
+                                        </div>                                                                                
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-3 control-label">Điện thoại</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" th:field="*{phone}" required="true">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-3 control-label">Địa chỉ</label>
+                                            <div class="col-sm-9">
+                                                <textarea type="text" class="form-control" th:field="*{address}"></textarea>
+                                            </div>
+                                        </div>
+                                                                              
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-4 col-sm-8">
+                                                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                            </div>
+                                        </div>                                       
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Footer-->
+            <div class="footer" th:insert="common/footer::footer"></div>
+            <!--End footer-->
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                $(".menu-quick-select ul").hide();
+                $(".menu-quick-select").hover(function () {
+                $(".menu-quick-select ul").show();
+                }, function () {
+                $(".menu-quick-select ul").hide();
+                });
+                });
+            </script>
+        </div>
+
+        <script th:src="@{/js/shoppingCart.js}" type="text/javascript"></script>
+        <div style="display: none;" id="loading-mask">
+            <div id="loading_mask_loader" class="loader">
+                <img alt="Loading..." th:src="@{/images/ajax-loader-main.gif}" />
+                <div>
+                    Please wait...
+                </div>
+            </div>
+        </div>
+        <a href="javascript:void(0);" class="back-to-top"><span>Top</span></a>
+    </body>
+</html>

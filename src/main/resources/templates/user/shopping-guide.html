@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="common/header::headerArea(~{::title})">
+        <title>Hướng dẫn mua hàng</title>
+    </head>
+    <body>
+        <div class="wrapper">
+
+            <!--Header-->
+            <div th:replace="common/header::header"></div>
+            <!--End header-->
+
+            <div class="main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="breadcrumb clearfix">
+                                <ul>
+                                    <li class="home">
+                                        <a title="Đến trang chủ" href="/" itemprop="url"><span itemprop="title">Trang chủ</span></a>
+                                    </li>
+                                    <li class="icon-li"><strong>Hướng dẫn mua hàng</strong> </li>
+                                </ul>
+                            </div>
+                            <div class="page-option">
+                                <h1 class="title">
+                                    <span>Hướng dẫn mua hàng</span>
+                                </h1>
+                                <div class="page-option-block">
+                                    <p style="border: 0px; margin: 0px 0px 20px; padding: 0px; font-size: 16px; color: rgb(51, 51, 51); font-family: Arial, Tahoma, Verdana; line-height: 20px;">
+                                        <strong style="border: 0px; margin: 0px; padding: 0px;">Bước 1:</strong></p>
+                                    <p style="border: 0px; margin: 0px 0px 20px; padding: 0px; font-size: 14px; color: rgb(51, 51, 51); font-family: Arial, Tahoma, Verdana; line-height: 20px;">
+                                        Chọn sản phẩm, màu sắc, số lượng muốn mua.... Sau đó click vào nút&nbsp;<strong style="border: 0px; margin: 0px; padding: 0px;">"MUA NGAY"</strong></p>
+                                    <p style="border: 0px; margin: 0px 0px 20px; padding: 0px; font-size: 14px; color: rgb(51, 51, 51); font-family: Arial, Tahoma, Verdana; line-height: 20px;">
+                                        <img th:src="@{/images/shopping-guide-step-1.jpg}" style="border: 0px; margin: 0px; padding: 0px; font-size: 0px; color: transparent; vertical-align: middle;"></p>
+                                    <p style="border: 0px; margin: 0px 0px 20px; padding: 0px; font-size: 16px; color: rgb(51, 51, 51); font-family: Arial, Tahoma, Verdana; line-height: 20px;">
+                                        <strong style="border: 0px; margin: 0px; padding: 0px;">Bước 2:</strong></p>
+                                    <p style="border: 0px; margin: 0px 0px 20px; padding: 0px; font-size: 14px; color: rgb(51, 51, 51); font-family: Arial, Tahoma, Verdana; line-height: 20px;">
+                                        Hệ thống dẫn bạn vào trang giỏ hàng, vui lòng kiểm tra tên sản phẩm, số lượng, màu sắc, giá tiền, tổng tiền....Tại đây bạn có thể thay đổi màu sắc, số lượng, xóa sản phẩm không muốn mua hoặc có thể trở về trang chủ để tiếp tục mua hàng. Nếu muốn thanh toán đơn hàng, vui lòng click vào nút&nbsp;<strong style="border: 0px; margin: 0px; padding: 0px;">"Đặt hàng"</strong></p>
+                                    <p style="border: 0px; margin: 0px 0px 20px; padding: 0px; font-size: 14px; color: rgb(51, 51, 51); font-family: Arial, Tahoma, Verdana; line-height: 20px;">
+                                        <img th:src="@{/images/shopping-guide-step-2.jpg}" style="border: 0px; margin: 0px; padding: 0px; font-size: 0px; color: transparent; vertical-align: middle;"></p>
+                                    <p style="border: 0px; margin: 0px 0px 20px; padding: 0px; font-size: 16px; color: rgb(51, 51, 51); font-family: Arial, Tahoma, Verdana; line-height: 20px;">
+                                        <strong style="border: 0px; margin: 0px; padding: 0px;">Bước 3:</strong></p>
+                                    <p style="border: 0px; margin: 0px 0px 20px; padding: 0px; font-size: 14px; color: rgb(51, 51, 51); font-family: Arial, Tahoma, Verdana; line-height: 20px;">
+                                        Hệ thống dẫn bạn vào trang thông tin mua hàng. Nếu bạn đã có tài khoản tại mydeal.vn, vui lòng chọn&nbsp;<strong style="border: 0px; margin: 0px; padding: 0px;">"Đăng nhập"</strong>. Nếu bạn muốn đăng ký tài khoảng, vui lòng chọn&nbsp;<strong style="border: 0px; margin: 0px; padding: 0px;">"Đăng ký"</strong>. Nếu muốn đặt hàng nhanh mà không cần đăng ký, vui lòng nhập đầy đủ thông tin vào bảng mẫu bên dưới:</p>
+                                    <p style="border: 0px; margin: 0px 0px 20px; padding: 0px; font-size: 14px; color: rgb(51, 51, 51); font-family: Arial, Tahoma, Verdana; line-height: 20px;">
+                                        <img th:src="@{/images/shopping-guide-step-3.jpg}" style="border: 0px; margin: 0px; padding: 0px; font-size: 0px; color: transparent; vertical-align: middle;"></p>
+                                    <p style="border: 0px; margin: 0px 0px 20px; padding: 0px; font-size: 14px; color: rgb(51, 51, 51); font-family: Arial, Tahoma, Verdana; line-height: 20px;">
+                                        Để kết thúc đặt hàng, vui lòng chọn&nbsp;<strong style="border: 0px; margin: 0px; padding: 0px;">"Hoàn tất đặt hàng"</strong></p>
+                                    <p style="border: 0px; margin: 0px 0px 20px; padding: 0px; font-size: 16px; color: rgb(51, 51, 51); font-family: Arial, Tahoma, Verdana; line-height: 20px;">
+                                        <strong style="border: 0px; margin: 0px; padding: 0px;">Bước 4:</strong></p>
+                                    <p style="border: 0px; margin: 0px 0px 20px; padding: 0px; font-size: 14px; color: rgb(51, 51, 51); font-family: Arial, Tahoma, Verdana; line-height: 20px;">
+                                        Hệ thống thông báo bạn đặt hàng thành công. Chúc mừng bạn !</p>
+                                    <p style="border: 0px; margin: 0px 0px 20px; padding: 0px; font-size: 14px; color: rgb(51, 51, 51); font-family: Arial, Tahoma, Verdana; line-height: 20px;">
+                                        <img th:src="@{/images/shopping-guide-step-4.jpg}" style="border: 0px; margin: 0px; padding: 0px; font-size: 0px; color: transparent; vertical-align: middle;"></p>
+
+                                </div>
+                            </div>               
+                        </div>
+                        <div class="col-md-3">                            
+                            <!--Begin-->
+                            <div class="box-support-online">
+                                <h3><span>Hỗ trợ trực tuyến</span></h3>
+                                <div class="support-online-block">
+                                    <div class="support-hotline">
+                                        HOTLINE<br><span class="ng-binding">0908 77 00 95</span>
+                                    </div>
+                                    <!-- ngRepeat: item in SupportOnlines -->
+                                </div>
+                            </div>
+                            <!--End-->          
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Footer-->
+            <div class="footer" th:insert="common/footer::footer"></div>
+            <!--End footer-->
+            
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(".menu-quick-select ul").hide();
+                    $(".menu-quick-select").hover(function () {
+                        $(".menu-quick-select ul").show();
+                    }, function () {
+                        $(".menu-quick-select ul").hide();
+                    });
+                });
+            </script>
+        </div>
+
+        <script th:src="@{/js/shoppingCart.js}" type="text/javascript"></script>
+        <div style="display: none;" id="loading-mask">
+            <div id="loading_mask_loader" class="loader">
+                <img alt="Loading..." th:src="@{/images/ajax-loader-main.gif}" />
+                <div>
+                    Please wait...
+                </div>
+            </div>
+        </div>
+        <a href="javascript:void(0);" class="back-to-top"><span>Top</span></a>
+    </body>
+</html>

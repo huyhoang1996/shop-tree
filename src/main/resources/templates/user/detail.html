@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="common/header::headerArea(~{::title})">
+        <title th:text="${product.ProductName}"></title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <!--Header-->
+            <div th:replace="common/header::header"></div>
+            <!--End header-->
+
+            <div id="product">
+                <div class="main">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="breadcrumb clearfix">
+                                    <ul>
+                                        <li class="home">
+                                            <a href="/"><span itemprop="title">Trang chủ</span></a>
+                                        </li>
+                                        <li class="category17 icon-li">
+                                            <div class="link-site-more">
+                                                <a title="" href="#" itemprop="url">
+                                                    <span itemprop="title" th:text="${product.categoryName}"></span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="productname icon-li"><strong th:text="${product.productName}"></strong> </li>
+                                    </ul>
+                                </div>
+
+                                <link th:href="@{/css/smoothproducts.css}" rel="stylesheet" type="text/css">
+                                <script th:src="@{/js/smoothproducts.js}" type="text/javascript">
+                                </script>
+                                <script th:src="@{/js/productServices.js}">
+                                </script>
+                                <script th:src="@{/js/productController.js}">
+                                </script>
+                                <div class="product-detail clearfix relative ng-scope">
+
+                                    <!--Product detail-->
+                                    <div class="clearfix">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6 col-xs-12 product-image clearfix">
+                                                <div class="sp-loading" style="display: none;">
+                                                    <img th:src="@{/images/sp-loading.gif}" alt=""><br>LOADING IMAGES
+                                                </div>
+                                                <div class="sp-wrap sp-non-touch" style="display: inline-block;">                           
+                                                    <div class="sp-large">
+                                                        <a class="ng-scope sp-current-big">
+                                                            <img th:src="@{'/images/product/' + ${product.imageUrl}}">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12 clearfix">
+                                                <h1 class="name m-b-5 ng-binding" th:text="${product.productName}"></h1>                                               
+                                                <div class="product_price p-b-10 ng-scope">
+                                                    <div class="ng-scope">
+                                                        <ins class="m-b-5 ng-binding" th:text="${#numbers.formatDecimal(product.sellPrice, 0, 'COMMA', 2, 'POINT')} + '₫'"></ins>
+                                                    </div>
+                                                </div>
+                                                <div class="product-code p-b-10 ng-binding">
+                                                    <span>
+                                                        <b>Mã SP :</b><span th:text="' SP-' + ${product.productId}"></span>                                                     
+                                                    </span>
+                                                </div>
+                                                <div class="product-code p-b-10 ng-binding" th:unless="${#strings.toString(product.quantity) == '0'}">
+                                                    <span><b>Tình trạng</b> : Còn hàng</span>
+                                                </div>
+                                                <div class="product-code p-b-10 ng-binding" th:if="${#strings.toString(product.quantity) == '0'}">
+                                                    <span><b>Tình trạng</b> : Hết hàng</span>
+                                                </div>
+                                                <div id="add-item-form" class="variants clearfix m-b-10 p-b-10">                                                                                        
+                                                    <div class="clearfix product_quantity m-t-10 m-b-20">
+                                                        <label class="label_quantity m-b-5">Số lượng</label>
+                                                        <button class="button buttonQuantity b-r-0">-</button>
+                                                        <input name="quantity" id="myQuantity" class="quantity text-center" min="1" value="1" type="number">
+                                                        <button class="button buttonQuantity b-l-0">+</button>
+                                                        <script type="text/javascript">
+                                                            $(".buttonQuantity").on("click", function () {
+                                                                var button = $(this);
+                                                                var oldValue = button.parent().find("input").val();
+                                                                var newVal = 0;
+                                                                if (button.text() === "+") {
+                                                                    newVal = parseFloat(oldValue) + 1;
+                                                                } else {
+                                                                    // Don't allow decrementing below zero
+                                                                    if (oldValue > 0) {
+                                                                        newVal = parseFloat(oldValue) - 1;
+                                                                    } else {
+                                                                        newVal = 0;
+                                                                    }
+                                                                }
+                                                                button.parent().find("input").val(newVal);
+                                                            });
+                                                        </script>
+                                                    </div>                                                    
+                                                    <div class="button clearfix ng-scope">
+                                                        <div class="col-lg-6 col-sm-6 col-xs-6 col-xxs-12 p-l-0 p-r-xxs-0 m-b-10">
+                                                            <button id="add-to-cart" th:proid="${product.productId}" th:proname="${product.productName}" th:price="${product.sellPrice}" th:proimg="'/images/product/' +${#strings.trim(product.imageUrl)}">
+                                                                <i class="fa fa-cart-plus"></i> Thêm giỏ hàng
+                                                            </button>
+                                                        </div>                                                       
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="product_description product-tabs panel-group">
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <li role="presentation" class="ng-scope active">
+                                                <a href="#tab1" role="tab" class="ng-binding">Chi tiết sản phẩm</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="tab1">
+                                                <div class="container-fluid">
+                                                    <div>                                                           
+                                                        <p>
+                                                            <span style="color: rgb(0,0,0)">
+                                                                <img th:alt="${product.ProductName}" th:src="@{'/images/product/' + ${product.imageUrl}}" style="display: block; margin-left:auto; margin-right:auto" th:title="${product.ProductName}">
+                                                            </span>
+                                                        </p>
+
+                                                        <p th:text="${product.Description}"></p>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end ngRepeat: item in ProductTabs -->
+                                        </div>
+                                    </div>
+                                    <!--End product detail-->
+
+                                </div>  
+
+                                <!--Product relation-->
+                                <div class="product-content product-other">
+                                    <h1 title="products" class="page_heading ">
+                                        Sản phẩm liên quan
+                                    </h1>
+                                    <div class="product_list grid clearfix">
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product-wrapper zoomIn wow" style="visibility: visible; animation-name: zoomIn;" th:each="item : ${listProductRelation}">
+                                            <div class="product-block product-resize m-b-20 fixheight" style="height: 295px;" >
+                                                <div class="product-image image-resize" style="height: 208px;">
+                                                    <div class="sold-out">Hot</div>
+                                                    <a th:href="@{'/users/products/detail/' + ${item.productId}}">
+                                                        <img class="first-img" th:src="@{'/images/product/' + ${item.imageUrl}}">
+                                                    </a>
+                                                    <div class="product-actions hidden-xs">
+                                                        <div class="btn-add-to-cart" th:proid="${item.productId}" th:proname="${item.productName}" th:quantity="1" th:price="${item.sellPrice}" th:proimg="'/images/product/' +${#strings.trim(item.imageUrl)}">
+                                                            <a href="javascript:void(0);"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                                                        </div>
+                                                        <div class="btn_quickview">
+                                                            <a class="quickview" th:href="@{'/users/products/detail/' + ${item.productId}}"><i class="fa fa-eye"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-info text-center m-t-xxs-20">
+                                                    <h3 class="pro-name">
+                                                        <a th:href="@{'/users/products/detail/' + ${item.productId}}" th:title="${item.productName}" th:text="${item.productName}"></a>
+                                                    </h3>
+                                                    <div class="pro-prices">
+                                                        <span class="pro-price" th:text="${#numbers.formatDecimal(item.sellPrice, 0, 'COMMA', 2, 'POINT')} + '₫'"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                                       
+                                    </div>
+                                </div>
+                                <!--End product relation-->
+                            </div>
+
+                            <!--Right menu-->
+                            <div class="col-md-3">
+                                <div class="menu-product">
+                                    <h3>
+                                        <span>
+                                            Sản phẩm
+                                        </span>
+                                    </h3>
+                                    <ul class="level0">
+                                        <li th:each="item : ${categories}">
+                                            <a th:href="@{'/products/category/' + ${item.categoryId}}">
+                                                <i class="fa fa-arrow-circle-right"></i><span th:text="${item.CategoryName}" style="margin-left: 5px"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!--Begin-->
+                                <div class="box-sale-policy ng-scope">
+                                    <h3><span>Chính sách bán hàng</span></h3>
+                                    <div class="sale-policy-block">
+                                        <ul>
+                                            <li>Giao hàng TOÀN QUỐC</li>
+                                            <li>Thanh toán khi nhận hàng</li>
+                                            <li>Đổi trả trong <span>15 ngày</span></li>
+                                            <li>Hoàn ngay tiền mặt</li>
+                                            <li>Chất lượng đảm bảo</li>
+                                            <li>Miễn phí vận chuyển:<span>Đơn hàng từ 3 món trở lên</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="buy-guide">
+                                        <h3>Hướng Dẫn Mua Hàng</h3>
+                                        <ul>
+                                            <li>
+                                                Mua hàng trực tiếp tại website
+                                                <b class="ng-binding"> http://www.webtretho.com</b>
+                                            </li>
+                                            <li>
+                                                Gọi điện thoại <strong class="ng-binding">
+                                                    0123 456 789
+                                                </strong> để mua hàng
+                                            </li>
+                                            <li>
+                                                Mua tại Trung tâm CSKH:<br>
+                                                <strong class="ng-binding">38 Yên Bái, Tp Đà Nẵng</strong>
+                                            </li>
+                                            <li>
+                                                Mua sỉ/buôn xin gọi <strong class="ng-binding">
+                                                    0123 456 789
+                                                </strong> để được hỗ trợ.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--End-->
+                            </div>
+                            <!--End right menu-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Footer-->
+            <div class="footer" th:insert="common/footer::footer"></div>
+            <!--End footer-->
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(".menu-quick-select ul").hide();
+                    $(".menu-quick-select").hover(function () {
+                        $(".menu-quick-select ul").show();
+                    }, function () {
+                        $(".menu-quick-select ul").hide();
+                    });
+                });
+            </script>
+        </div>
+
+        <script th:src="@{/js/shoppingCart.js}" type="text/javascript"></script>
+        <div style="display: none;" id="loading-mask">
+            <div id="loading_mask_loader" class="loader">
+                <img alt="Loading..." th:src="@{/images/ajax-loader-main.gif}" />
+                <div>
+                    Please wait...
+                </div>
+            </div>
+        </div>
+        <a href="javascript:void(0);" class="back-to-top"><span>Top</span></a>
+    </body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="common/header::headerArea(~{::title})">
+        <title>Chi tiết đơn hàng của tôi</title>
+    </head>
+    <body>
+        <div class="wrapper">
+
+            <!--Header-->
+            <div th:replace="common/header::header"></div>
+            <!--End header-->
+
+            <div class="main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">                           
+                            <div class="menu-account ng-scope">
+                                <h3>
+                                    <span>
+                                        Quản lý cá nhân
+                                    </span>
+                                </h3>
+                                <ul>
+                                    <li><a th:href="@{/users/customer/edit}"><i class="glyphicon glyphicon-user"></i> Thông tin tài khoản</a></li>
+                                    <li class="active"><a th:href="@{/users/customer/check-order}"><i class="glyphicon glyphicon-list-alt"></i> Đơn hàng của tôi</a></li>                                  
+                                    <li><a th:href="@{/users/customer/change-password}"><i class="fa fa-key"></i> Thay đổi mật khẩu</a></li>
+                                    <li><a th:href="@{/users/customer/logout}"><i class="glyphicon glyphicon-log-out"></i> Thoát</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+
+                            <div class="breadcrumb clearfix">
+                                <ul>
+                                    <li class="home">
+                                        <a title="Đến trang chủ" th:href="@{/users/}" itemprop="url"><span itemprop="title">Trang chủ</span></a>
+                                    </li>
+                                    <li class="icon-li"><strong>Đơn hàng của tôi</strong> </li>
+                                </ul>
+                            </div>                           
+                            <div class="myorder-content myorder-detail-content clearfix">
+                                <h1 class="title"><span>Đơn hàng của tôi</span></h1>
+                                <div class="myorder-block">
+                                    <div class="row-title docs">Đơn hàng của 
+                                        <a href="javascript:void(0);" th:text="${order.CustomerId.CustomerName}"></a>
+                                        <b th:text="'('+ ${order.OrderCode} +')'"></b> lúc 
+                                        <span class="grey" th:text="${order.OrderDate}"></span>
+                                    </div>
+                                    <div class="table-responsive clearfix myorder-info">
+                                        <table class="table table-mycart">
+                                            <thead>
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th>Mã sản phẩm</th>
+                                                    <th>Giá</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Thành tiền</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr th:each="item,iter : ${listOrderDetail}">
+                                                    <td th:text="${iter.index + 1}"></td>                                                   
+                                                    <td>
+                                                        <a href="javascript:void(0);" th:text="${item.ProductId.ProductName}"></a>
+                                                    </td>
+                                                    <td th:text="'SP - ' + ${item.ProductId.ProductId}"></td>
+                                                    <td th:text="${item.Price}"></td>
+                                                    <td th:text="${item.Quantity}"></td>
+                                                    <td th:text="${#numbers.formatDecimal(item.Price * item.Quantity, 0, 'COMMA', 2, 'POINT')} + ' đ'"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border-right" colspan="3">
+                                                        <div class="box-customer-content" th:if="${order.ShippingId}">
+                                                            <div class="title docs"><span>Thông tin giao hàng</span></div>
+                                                            <div>[Anh/Chị] :<b th:text="${order.ShippingId.ShippingName}"></b></div>
+                                                            <div>
+                                                                <span th:text="${order.ShippingId.Email}"></span> |<br/>
+                                                                <span th:text="${order.ShippingId.Address}"></span> | <br/>
+                                                                <span th:text="${order.ShippingId.Phone}"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="box-customer-content" th:unless="${order.ShippingId}">
+                                                            <div class="title"><span>Thông tin giao hàng</span></div>
+                                                            <div>[Anh/Chị] :<b th:text="${order.CustomerId.CustomerName}"></b></div>
+                                                            <div>
+                                                                <span th:text="${order.CustomerId.Email}"></span> |<br/>
+                                                                <span th:text="${order.CustomerId.Address}"></span> | <br/>
+                                                                <span th:text="${order.CustomerId.Phone}"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="box-customer-content">
+                                                            <div class="title"><span>Thông tin thanh toán</span></div>
+                                                            <div>[Anh/Chị] :<b th:text="${order.CustomerId.CustomerName}"></b></div>
+                                                            <div>
+                                                                <span th:text="${order.CustomerId.Email}"></span> |<br/>
+                                                                <span th:text="${order.CustomerId.Address}"></span> | <br/>
+                                                                <span th:text="${order.CustomerId.Phone}"></span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td colspan="4">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="text-left"><b>Tổng tiền thanh toán</b></td>
+                                                                    <td class="text-right ">
+                                                                        <b class="total-payment" th:text="${#numbers.formatDecimal(order.Total, 0, 'COMMA', 2, 'POINT')} + ' đ'">
+                                                                            
+                                                                        </b>
+                                                                        <div class="help-block">Bao gồm VAT</div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="text-center order-stt">
+                                                                    <td colspan="2">
+                                                                        <div class="docs">Trạng thái đơn hàng</div>
+                                                                        <div class="docs"><b th:text="${order.Status}"></b></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="button text-right">
+                                        <a class="btn btn-default" th:href="@{/users/customer/check-order}">Trở về danh sách đơn hàng</a>
+                                        <a class="btn btn-primary" th:href="@{/users/}">Tiếp tục mua hàng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Footer-->
+            <div class="footer" th:insert="common/footer::footer"></div>
+            <!--End footer-->
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                $(".menu-quick-select ul").hide();
+                $(".menu-quick-select").hover(function () {
+                $(".menu-quick-select ul").show();
+                }, function () {
+                $(".menu-quick-select ul").hide();
+                });
+                });
+            </script>
+        </div>
+
+        <script th:src="@{/js/shoppingCart.js}" type="text/javascript"></script>
+        <div style="display: none;" id="loading-mask">
+            <div id="loading_mask_loader" class="loader">
+                <img alt="Loading..." th:src="@{/images/ajax-loader-main.gif}" />
+                <div>
+                    Please wait...
+                </div>
+            </div>
+        </div>
+        <a href="javascript:void(0);" class="back-to-top"><span>Top</span></a>      
+    </body>
+</html>

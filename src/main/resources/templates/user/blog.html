@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="common/header::headerArea(~{::title})">
+        <title>Blog</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <!--Header-->
+            <div th:replace="common/header::header"></div>
+            <!--End header-->
+
+            <div id="blog-template">
+                <div class="main">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-9">
+
+                                <div class="breadcrumb clearfix">
+                                    <ul>
+                                        <li class="home">
+                                            <a title="Đến trang chủ" th:href="@{/users/}" itemprop="url"><span itemprop="title">Trang chủ</span></a>
+                                        </li>
+                                        <li class="icon-li"><strong>Blog</strong> </li>
+                                    </ul>
+                                </div>
+
+                                <div class="news-content">
+                                    <h1 title="blog" class="page-heading">
+                                        Blog
+                                    </h1>
+                                    <div class="blog_wrap">
+
+                                        <article class="blog_item clearfix" th:each="item : ${blogs}">
+                                            <div class="blog_item_image text-center">
+                                                <a th:href="@{/users/blog/detail(id=${item.BlogId})}">
+                                                    <img th:src="@{'/images/' + ${item.Image}}">
+                                                </a>
+                                            </div>
+                                            <div class="blog_item_content">
+                                                <a th:href="@{/users/blog/detail(id=${item.BlogId})}">
+                                                    <h2 th:text="${item.Title}"></h2>
+                                                </a>
+                                                <p th:text="${item.new1}">
+                                                    
+                                                </p>
+                                                <div class="blog-content-short-description">
+                                                    <p th:text="${#strings.substring(item.Description,0,100)} + ' ....'"></p>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <!-- Paginate -->
+                                    <!-- End paginate -->
+                                </div>                   
+                            </div>
+
+                            <!-- Blog sidebar -->
+                            <div class="col-md-3">                              
+                                <div class="sidebar_blogs">
+                                    <h3 title="bài viết mới" class="sidebar_title">
+                                        Bài viết nổi bật
+                                    </h3>
+                                    <div class="blog_content">
+                                        
+                                        <div class="article_item" th:each="item : ${blogSidebar}">
+                                        <div class="article_img">
+                                            <a th:href="@{/users/blog/detail(id=${item.BlogId})}">
+                                                <img th:src="@{'/images/' + ${item.Image}}">
+                                            </a>
+                                        </div>
+                                        <div class="article_content clearfix">
+                                            <div class="title">
+                                                <h4><a th:href="@{/users/blog/detail(id=${item.BlogId})}" th:text="${item.Title}"></a></h4>
+                                            </div>
+                                            <div class="article_meta">
+                                                <div class="article_comment">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i> 
+                                                    <span th:text="${item.View}"></span>
+                                                </div>
+                                                <div class="article_created">
+                                                    <i class="fa fa-calendar" aria-hidden="true"></i> <time th:text="${item.new1}"></time>
+                                                </div>
+                                            </div>
+                                            <div class="des">
+                                                <p th:text="${#strings.substring(item.Description,0,100)} + ' ....'"></p>
+
+                                            </div>
+                                            <a class="readmore" th:href="@{/blog/detail(id=${item.BlogId})}">Đọc tiếp <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                </div>                               
+                            </div>
+                            <!-- End blog sidebar -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Footer-->
+            <div class="footer" th:insert="common/footer::footer"></div>
+            <!--End footer-->
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(".menu-quick-select ul").hide();
+                    $(".menu-quick-select").hover(function () {
+                        $(".menu-quick-select ul").show();
+                    }, function () {
+                        $(".menu-quick-select ul").hide();
+                    });
+                });
+            </script>
+        </div>
+        <script th:src="@{/js/shoppingCart.js}" type="text/javascript"></script>
+        <div style="display: none;" id="loading-mask">
+            <div id="loading_mask_loader" class="loader">
+                <img alt="Loading..." th:src="@{/images/ajax-loader-main.gif}" />
+                <div>
+                    Please wait...
+                </div>
+            </div>
+        </div>
+        <a href="javascript:void(0);" class="back-to-top"><span>Top</span></a>
+    </body>
+</html>

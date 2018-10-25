@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="common/header::headerArea(~{::title})">
+        <title>Liên hệ</title>
+    </head>
+    <body style="">       
+        <div class="wrapper">
+            <!--Header-->
+            <div th:replace="common/header::header"></div>
+            <!--End header-->
+
+            <div id="page">
+                <div class="main">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <!--Begin-->
+                                <div class="box-support-online">
+                                    <h3><span>Hỗ trợ trực tuyến</span></h3>
+                                    <div class="support-online-block">
+                                        <div class="support-hotline">
+                                            HOTLINE<br><span>0123 456 789</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--End-->
+                            </div>
+                            <div class="col-md-9">
+
+                                <div class="breadcrumb clearfix">
+                                    <ul>
+                                        <li class="home">
+                                            <a title="Đến trang chủ" href="#"><span itemprop="title">Trang chủ</span></a>
+                                        </li>
+                                        <li class="icon-li"><strong>Liên hệ</strong> </li>
+                                    </ul>
+                                </div>
+
+                                <!--Begin-->
+                                <div class="contact-content clearfix">
+                                    <div class="content clearfix">
+                                        <h1 title="liên hệ">
+                                            Liên hệ
+                                        </h1>
+                                        <div class="col-md-12 col-xs-12 col-sm-12">
+                                            <div class="map clearfix">
+                                                <div class="map-canvas" id="map_canvas">
+                                                    <a href="https://www.google.com/maps/place/Tòa+Nhà+VNPT+Đà+Nẵng,+38+Yên+Bái,+Hải+Châu+1,+Hải+Châu,+Đà+Nẵng+550000/@16.0694217,108.220388,17" target="_blank">
+                                                        <img th:src="@{/images/maps.png}"/>
+                                                    </a>
+                                                </div>                                                                                          
+                                                <div class="map-information">                                             
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7" id="col-left contactFormWrapper">
+                                            <h3>Liên hệ với chúng tôi</h3>
+                                            <hr class="line-left">
+                                            <p>
+                                                Nếu bạn có thắc mắc gì, có thể gửi yêu cầu cho chúng tôi, và chúng tôi sẽ liên lạc lại với bạn sớm nhất có thể.
+                                            </p>
+                                            <form method="post">
+                                                <div class="form-group">
+                                                    <label class="sr-only">Tên</label>
+                                                    <input required="" id="contactFormName" class="form-control input-lg"  placeholder="Tên của bạn" autocapitalize="words" value="" type="text">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label  class="sr-only">Số điện thoại</label>
+                                                    <input required="" id="contactFormPhone" class="form-control input-lg"  placeholder="Số điện thoại của bạn" autocapitalize="words" value="" type="text">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="sr-only">Email</label>
+                                                    <input required="" name="contact[email]" placeholder="Email của bạn"  class="form-control input-lg" autocorrect="off" autocapitalize="off" value="" type="email">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="sr-only">Tiêu đề</label>
+                                                    <input required="" id="contactFormTitle" class="form-control input-lg" placeholder="Tiêu đề" value="" type="text">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="contactFormMessage" class="sr-only">Nội dung</label>
+                                                    <textarea required="" rows="6" class="form-control" placeholder="Viết bình luận" id="contactFormMessage"></textarea>
+                                                </div>
+                                                <input class="btn btn-primary btn-lg" value="Gửi liên hệ" type="submit">
+                                            </form>
+                                        </div>
+                                        <div class="col-md-5" id="col-right">
+                                            <h3>Địa chỉ liên lạc</h3>
+                                            <hr class="line-right">
+                                            <h3 class="name-company">Đồ án JavaSpring Sem4</h3>
+                                            <p>&nbsp;</p>
+                                            <ul class="info-address">
+                                                <li class="m-b-5">
+                                                    <i class="fa fa-location-arrow m-r-5"></i>
+                                                    <span>38 Yên Bái,Tp Đà Nẵng</span>
+                                                </li>
+                                                <li class="m-b-5">
+                                                    <i class="fa fa-mail-forward m-r-5"></i>
+                                                    <span>abc@gmail.com</span>
+                                                </li>
+                                                <li class="m-b-5">
+                                                    <i class="fa fa-phone m-r-5"></i>
+                                                    <span>0123 456 789</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!--End-->
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Footer-->
+            <div class="footer" th:insert="common/footer::footer"></div>
+            <!--End footer-->
+            <script type="text/javascript">
+                $(document).ready(function () {
+                $(".menu-quick-select ul").hide();
+                $(".menu-quick-select").hover(function () { $(".menu-quick-select ul").show(); }, function () { $(".menu-quick-select ul").hide(); });
+                });
+            </script>
+        </div>
+
+        <script th:src="@{/js/shoppingCart.js}" type="text/javascript"></script>
+        <div style="display: none;" id="loading-mask">
+            <div id="loading_mask_loader" class="loader">
+                <img alt="Loading..." th:src="@{/images/ajax-loader-main.gif}" />
+                <div>
+                    Please wait...
+                </div>
+            </div>
+        </div>
+        <a href="javascript:void(0);" class="back-to-top"><span>Top</span></a>
+    </body>
+</html>
+

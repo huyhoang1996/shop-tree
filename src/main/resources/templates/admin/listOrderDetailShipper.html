@@ -1,0 +1,93 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Startmin - Bootstrap Admin Theme</title>
+
+        <link href="/admin/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/admin/css/metisMenu.min.css" rel="stylesheet">
+        <link href="/admin/css/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+        <link href="/admin/css/dataTables/dataTables.responsive.css" rel="stylesheet">
+        <link href="/admin/css/startmin.css" rel="stylesheet">
+        <link href="/admin/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    </head>
+    <body>
+
+        <div id="wrapper">
+
+            <div th:replace="admin/common/header::header"></div>
+
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">QUẢN LÝ ORDER</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <a th:href="@{/shipper}" class="btn btn-success pull-left">
+                            <span class="fa fa-arrow-left"></span> Quay lại
+			</a>
+                    </div>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Danh sách
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="dataTable_wrapper">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th>Tên sản phẩm</th>
+                                                <th>Giá sản phẩm</th>
+                                                <th>Số lượng</th>
+                                                <th>Thuế</th>
+                                                <th>Giảm giá</th>
+                                                <th>Thành tiền</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="odd gradeX" th:each="listOrde : ${listdetail}">
+                                                <td th:text="${listOrde.productId.productName}"></td>
+                                                <td th:text="${listOrde.price}"></td>
+                                                <td th:text="${listOrde.quantity}"></td>
+                                                <td th:text="${listOrde.tax}"></td>
+                                                <td th:text="${listOrde.discount}"></td>
+                                                <td th:text="${ (listOrde.price * listOrde.quantity) - (listOrde.price * listOrde.quantity*listOrde.discount /100) + (listOrde.price * listOrde.quantity* listOrde.tax  /100) }"></td>                                               
+                                            </tr>                                    
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>                     
+                    </div>                  
+                </div>
+            </div>
+        </div>
+
+        <script src="/admin/js/jquery.min.js"></script>
+        <script src="/admin/js/bootstrap.min.js"></script>
+        <script src="/admin/js/metisMenu.min.js"></script>
+        <script src="/admin/js/dataTables/jquery.dataTables.min.js"></script>
+        <script src="/admin/js/dataTables/dataTables.bootstrap.min.js"></script>
+        <script src="/admin/js/startmin.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#dataTables-example').DataTable({
+                    responsive: true
+                });
+            });
+        </script>
+
+    </body>
+</html>
